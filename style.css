@@ -1,0 +1,454 @@
+/* --- FONTS --- */
+@font-face {
+    font-family: 'Homemade Apple';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/HomemadeApple.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Mr De Haviland';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/MrDeHaviland.woff2') format('woff2');
+}
+
+/* --- ЭКРАН (ФОРМА) --- */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    background: #f2f2f7;
+    margin: 0;
+    padding: 20px;
+    color: #000;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-size: 13px;
+    color: #555;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+.col {
+    flex: 1;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: #007aff;
+    color: white;
+    text-align: center;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-secondary {
+    background: #e5e5ea;
+    color: #111;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+.btn-toggle {
+    background: #e5e5ea;
+    color: #000;
+    padding: 8px;
+    margin-top: 5px;
+    font-size: 12px;
+    width: auto;
+    display: inline-block;
+    border-radius: 6px;
+    border: none;
+}
+
+.btn-toggle.active {
+    background: #007aff;
+    color: white;
+}
+
+/* Скрываем печатную версию на экране */
+#print-area {
+    display: none;
+}
+
+/* --- ПЕЧАТНАЯ ВЕРСИЯ (СТИЛИ) --- */
+/* Перенесены из @media print в глобальную область для использования в превью */
+
+:root {
+    --sig-row-height: 30px;
+}
+
+.po-page {
+    width: 100%;
+    padding: 0;
+}
+
+.po-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.po-logo {
+    width: 210px;
+    height: 120px;
+}
+
+.po-contact {
+    font-family: "Courier New", monospace;
+    font-size: 9px;
+    line-height: 1.35;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.po-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 8px;
+    font-weight: 700;
+    margin: 10px 2px 6px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+td,
+th {
+    border: 2px solid #222;
+    padding: 6px 8px;
+    vertical-align: top;
+}
+
+th {
+    text-align: center;
+    font-weight: 700;
+    font-size: 8px;
+}
+
+.po-label {
+    display: block;
+    font-weight: 700;
+    font-size: 8px;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+.po-value {
+    display: block;
+    margin-top: 6px;
+    font-family: "Courier New", monospace;
+    font-size: 10px;
+    font-weight: 700;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+.po-value.small {
+    font-size: 10px;
+}
+
+.mono-value {
+    font-family: "Courier New", monospace;
+    font-weight: 700;
+}
+
+.fit-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    display: block;
+}
+
+.wrap-text {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: center;
+}
+
+.grid-gap {
+    margin-top: 10px;
+}
+
+.po-data-row td {
+    padding: 4px 6px;
+    vertical-align: middle;
+}
+
+.po-data-row .po-value {
+    display: inline-block;
+    margin: 0;
+    line-height: 1;
+    white-space: normal;
+}
+
+.po-data-row .po-value.fit-text {
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.invoice-wrap {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.2;
+    width: 100%;
+}
+
+.invoice-wrap table {
+    border-collapse: collapse;
+}
+
+.left-table {
+    width: 72%;
+    flex: 0 0 72%;
+    border: 2px solid #222;
+    border-right: 0;
+    box-sizing: border-box;
+}
+
+.left-table td {
+    border: 2px solid #222;
+    border-right: 0;
+    padding: 10px 12px;
+    height: 20px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    font-size: 8px;
+}
+
+.left-table .notes {
+    text-transform: none;
+    font-weight: 700;
+}
+
+.right-table {
+    width: 100%;
+    border: 2px solid #222;
+}
+
+.right-table td {
+    border: 2px solid #222;
+    padding: 10px 12px;
+    height: 20px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 8px;
+}
+
+.right-table .label {
+    width: 50%;
+}
+
+.right-table .value {
+    width: 50%;
+    font-weight: 400;
+    font-family: "Courier New", monospace;
+    font-size: 9px;
+}
+
+.right-col {
+    width: 28%;
+    flex: 0 0 28%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-sizing: border-box;
+}
+
+.money-table {
+    width: 100%;
+    border: 2px solid #222;
+}
+
+.money-table td {
+    border: 2px solid #222;
+    padding: 10px 12px;
+    height: 25px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 8px;
+}
+
+.money-table .label {
+    width: 50%;
+}
+
+.money-table .value {
+    width: 50%;
+    text-transform: none;
+    font-weight: 700;
+    font-family: "Courier New", monospace;
+    font-size: 9px;
+}
+
+.po-side-box {
+    width: 260px;
+    border: 2px solid #222;
+    margin-left: auto;
+    margin-top: 10px;
+}
+
+.po-side-row {
+    display: flex;
+    border-bottom: 2px solid #222;
+}
+
+.po-side-row:last-child {
+    border-bottom: none;
+    background: #f1f1f1;
+}
+
+.po-side-label {
+    flex: 1;
+    padding: 8px 10px;
+    font-weight: 700;
+    font-size: 13px;
+    border-right: 2px solid #222;
+    text-align: center;
+}
+
+.po-side-val {
+    width: 110px;
+    padding: 8px 10px;
+    font-family: "Courier New", monospace;
+    font-weight: 700;
+    text-align: center;
+}
+
+.po-signatures {
+    margin-top: 20px;
+    border: 2px solid #222;
+}
+
+.po-sig-row {
+    display: flex;
+    border-bottom: 2px solid #222;
+}
+
+.po-sig-row:last-child {
+    border-bottom: none;
+}
+
+.po-sig-cell {
+    padding: 8px 10px;
+    border-right: 2px solid #222;
+    min-height: var(--sig-row-height);
+    position: relative;
+}
+
+.po-sig-cell:last-child {
+    border-right: none;
+}
+
+.po-sig-name {
+    font-family: "Courier New", monospace;
+    font-weight: 700;
+    font-size: 9px;
+    margin-top: 6px;
+}
+
+.sig-date {
+    font-size: 8px;
+}
+
+.po-signature-text {
+    font-family: "Mr De Haviland", cursive;
+    font-size: 30px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    bottom: -5px;
+    text-align: center;
+    transform: rotate(0deg);
+    transform-origin: center bottom;
+    white-space: nowrap;
+    overflow: visible;
+    color: #000;
+    line-height: 1;
+}
+
+.po-footer-notes {
+    margin-top: 12px;
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+/* --- ПЕЧАТНАЯ ВЕРСИЯ (MEDIA QUERY) --- */
+@media print {
+    @page {
+        margin: 12mm;
+        size: 200.3mm 259.3mm;
+    }
+
+    body {
+        background: #fff;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 700;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    #form-area {
+        display: none;
+    }
+
+    #print-area {
+        display: block;
+    }
+}

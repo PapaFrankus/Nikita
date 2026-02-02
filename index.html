@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Purchase Order</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="form-area">
+        <h2 style="text-align:center;">Goodlett Equipment</h2>
+
+        <div class="input-group">
+            <label>1. SALESMAN</label>
+            <input type="text" id="in_salesman" list="salesman_list" placeholder="Steve Johnson" />
+            <datalist id="salesman_list">
+                <option value="Steve Johnson"></option>
+                <option value="Kevin Donovan"></option>
+            </datalist>
+        </div>
+
+        <div class="input-group">
+            <label>2. PO NUMBER</label>
+            <div class="row">
+                <input type="number" id="in_po" readonly style="background:#eee;" />
+                <span style="padding:10px;">- 8</span>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>3. CUSTOMER</label>
+            <input type="text" id="in_customer" />
+            <div style="margin-top:5px;">
+                <button class="btn-toggle active" id="btn_bb">ВСЕ БОЛЬШИЕ</button>
+                <button class="btn-toggle" id="btn_Bb">Первая Большая</button>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Address / Date</label>
+            <input type="text" id="in_address" placeholder="Address" />
+            <input type="date" id="in_date" style="margin-top:5px;" />
+        </div>
+
+        <div class="input-group">
+            <div class="row">
+                <div class="col"><label>PHONE</label><input type="text" id="in_phone" /></div>
+                <div class="col"><label>EMAIL</label><input type="text" id="in_email" /></div>
+            </div>
+            <div class="row" style="margin-top:5px;">
+                <div class="col"><label>CITY</label><input type="text" id="in_city" /></div>
+                <div class="col"><label>ZIP</label><input type="text" id="in_zip" /></div>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Vehicle</label>
+            <div class="row">
+                <div class="col"><label>MFGR</label><input type="text" id="in_mfgr" /></div>
+                <div class="col"><label>MODEL</label><input type="text" id="in_model" /></div>
+            </div>
+            <input type="text" id="in_vin" placeholder="VIN" style="margin-top:5px;" />
+            <div class="row" style="margin-top:5px;">
+                <div class="col"><label>COLOR</label><input type="text" id="in_color" /></div>
+                <div class="col"><label>MILES</label><input type="text" id="in_miles" /></div>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Finance</label>
+            <div class="row">
+                <div class="col"><label>PRICE</label><input type="number" id="in_price" /></div>
+                <div class="col"><label>DELIVERY</label><input type="number" id="in_delivery" /></div>
+            </div>
+            <div class="row" style="margin-top:5px;">
+                <div class="col"><label>DOWN PAY</label><input type="number" id="in_down" /></div>
+                <div class="col"><label>TOTAL DUE</label><input type="text" id="in_total_due" readonly
+                        style="background:#e6f2ff;" /></div>
+            </div>
+        </div>
+
+        <button class="btn btn-secondary" id="btn_fill_demo">Заполнить все поля</button>
+        <button class="btn btn-secondary" id="btn_preview">Открыть предпросмотр</button>
+        <button class="btn" id="btn_print">Печать / PDF</button>
+    </div>
+
+    <div id="print-area">
+        <div class="po-page">
+            <div class="po-header">
+                <svg class="po-logo" viewBox="0 0 220 130" xmlns="http://www.w3.org/2000/svg"
+                    aria-label="Goodlett Equipment">
+                    <defs>
+                        <linearGradient id="gold" x1="0" x2="1">
+                            <stop offset="0" stop-color="#e0b54f" />
+                            <stop offset="1" stop-color="#b9861f" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M110 8l92 18v40c0 30-34 52-92 60C52 118 18 96 18 66V26z" fill="#0c0c0c" stroke="url(#gold)"
+                        stroke-width="4" />
+                    <rect x="48" y="38" width="124" height="36" rx="6" fill="url(#gold)" />
+                    <text x="110" y="63" text-anchor="middle" font-size="20" font-family="Arial" font-weight="700"
+                        fill="#111">GOODLETT</text>
+                    <text x="110" y="86" text-anchor="middle" font-size="12" font-family="Arial" font-weight="700"
+                        fill="url(#gold)">EQUIPMENT</text>
+                    <circle cx="110" cy="104" r="4" fill="url(#gold)" />
+                </svg>
+
+                <div class="po-contact">
+                    Phone: (839) 999-2536<br />
+                    Email: sales@goodlettequipments.com<br />
+                    Web: www.goodlettequipments.com
+                </div>
+            </div>
+
+            <div class="po-title">
+                <div>PURCHASE ORDER POM <span id="out_po">67962</span>-8</div>
+                <div>SALESMAN : <span id="out_salesman">Steve Johnson</span></div>
+            </div>
+
+            <table>
+                <tr>
+                    <td style="width: 34%">
+                        <span class="po-label">CUSTOMER:</span>
+                        <span class="po-value fit-text" id="out_customer">PETER JOHN RUSSELL</span>
+                    </td>
+                    <td style="width: 38%">
+                        <span class="po-label">ADDRESS:</span>
+                        <span class="po-value fit-text" id="out_address">630 NORWICH RD SALEM, CT 06420-3731</span>
+                    </td>
+                    <td style="width: 28%">
+                        <span class="po-label">DATE:</span>
+                        <span class="po-value center fit-text" id="out_date">01/08/2025</span>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="grid-gap">
+                <tr>
+                    <td style="width: 26%">
+                        <span class="po-label">CITY/STATE:</span>
+                        <span class="po-value fit-text" id="out_city">SALEM, CT</span>
+                    </td>
+                    <td style="width: 18%">
+                        <span class="po-label">ZIP:</span>
+                        <span class="po-value center fit-text" id="out_zip">06420-3731</span>
+                    </td>
+                    <td style="width: 24%">
+                        <span class="po-label">CELLPHONE:</span>
+                        <span class="po-value center fit-text" id="out_phone">(860) 303-6758</span>
+                    </td>
+                    <td style="width: 32%">
+                        <span class="po-label">EMAIL:</span>
+                        <span class="po-value small fit-text" id="out_email">rqagnon@ccllchome.com</span>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="grid-gap">
+                <tr>
+                    <th style="width: 6%">QTY</th>
+                    <th style="width: 10%">NEW/USED</th>
+                    <th style="width: 12%">MFGR</th>
+                    <th style="width: 26%">MODEL</th>
+                    <th style="width: 17%">VIN #</th>
+                    <th style="width: 14%">COLOR</th>
+                    <th style="width: 9%">MILES</th>
+                    <th style="width: 12%">PRICE</th>
+                </tr>
+                <tr class="center po-data-row">
+                    <td><span class="po-value fit-text">1</span></td>
+                    <td><span class="po-value fit-text">USED</span></td>
+                    <td><span class="po-value fit-text" id="out_mfgr">PETERBILT</span></td>
+                    <td><span class="po-value wrap-text" id="out_model">2022 PETERBILT 567</span></td>
+                    <td><span class="po-value small fit-text" id="out_vin">1NPCX4EXXND743943</span></td>
+                    <td><span class="po-value fit-text" id="out_color">BLACK</span></td>
+                    <td><span class="po-value fit-text" id="out_miles">191842</span></td>
+                    <td><span class="po-value fit-text" id="out_price">$94,900.00</span></td>
+                </tr>
+            </table>
+
+            <div class="invoice-wrap">
+                <table class="left-table">
+                    <tr>
+                        <td class="notes">Notes:</td>
+                    </tr>
+                    <tr>
+                        <td>OTHER CHARGES DESCRIPTION</td>
+                    </tr>
+                    <tr>
+                        <td>TRADE-IN MACHINERY</td>
+                    </tr>
+                </table>
+
+                <div class="right-col">
+                    <table class="right-table">
+                        <tr>
+                            <td class="label">TAX</td>
+                            <td class="value">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label">DELIVERY</td>
+                            <td class="value" id="out_delivery">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label">OTHER<br>CHARGES</td>
+                            <td class="value">-</td>
+                        </tr>
+                        <tr>
+                            <td class="label">TOTAL</td>
+                            <td class="value">-</td>
+                        </tr>
+                    </table>
+
+                    <table class="money-table">
+                        <tr>
+                            <td class="label">TRADE<br>ALLOWANCE</td>
+                            <td class="value">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td class="label">PAYOFF<br>AMOUNT</td>
+                            <td class="value">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td class="label">DOWN<br>PAYMENT</td>
+                            <td class="value" id="out_down">$0.00</td>
+                        </tr>
+                        <tr>
+                            <td class="label">TOTAL DUE</td>
+                            <td class="value" id="out_total_due">$35,000.00</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="po-signatures">
+                <div class="po-sig-row">
+                    <div class="po-sig-cell" style="width: 28%">
+                        <span class="po-label">Seller:</span>
+                        <div class="po-sig-name fit-text" id="out_salesman_sig">Steve Johnson</div>
+                    </div>
+                    <div class="po-sig-cell" style="width: 44%">
+                        <span class="po-label">Signature:</span>
+                        <div class="po-signature-text" id="out_salesman_sign">Steve Johnson</div>
+                    </div>
+                    <div class="po-sig-cell" style="width: 28%">
+                        <span class="po-label">Date signed:</span>
+                        <div class="po-sig-name right fit-text sig-date" id="out_date_sig1">01/08/2025</div>
+                    </div>
+                </div>
+                <div class="po-sig-row">
+                    <div class="po-sig-cell" style="width: 28%">
+                        <span class="po-label">Customer:</span>
+                        <div class="po-sig-name fit-text" id="out_customer_sig">Peter John Russell</div>
+                    </div>
+                    <div class="po-sig-cell" style="width: 44%">
+                        <span class="po-label">Signature:</span>
+                    </div>
+                    <div class="po-sig-cell" style="width: 28%">
+                        <span class="po-label">Date signed:</span>
+                        <div class="po-sig-name right fit-text sig-date" id="out_date_sig2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="po-footer-notes">
+                <div>The buyer hereby orders from the seller the equipment as stated above.</div>
+                <div>Terms to be settled as follows: Bank Wire Transfer.</div>
+                <div>I have read and understand the conditions stated below</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
