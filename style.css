@@ -39,8 +39,7 @@ label {
     color: #555;
 }
 
-input,
-select {
+input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -183,11 +182,6 @@ th {
     font-size: 10px;
 }
 
-.mono-value {
-    font-family: "Courier New", monospace;
-    font-weight: 700;
-}
-
 .fit-text {
     white-space: nowrap;
     overflow: hidden;
@@ -206,7 +200,7 @@ th {
 }
 
 .right {
-    text-align: center;
+    text-align: right;
 }
 
 .grid-gap {
@@ -332,40 +326,6 @@ th {
     font-weight: 700;
     font-family: "Courier New", monospace;
     font-size: 9px;
-}
-
-.po-side-box {
-    width: 260px;
-    border: 2px solid #222;
-    margin-left: auto;
-    margin-top: 10px;
-}
-
-.po-side-row {
-    display: flex;
-    border-bottom: 2px solid #222;
-}
-
-.po-side-row:last-child {
-    border-bottom: none;
-    background: #f1f1f1;
-}
-
-.po-side-label {
-    flex: 1;
-    padding: 8px 10px;
-    font-weight: 700;
-    font-size: 13px;
-    border-right: 2px solid #222;
-    text-align: center;
-}
-
-.po-side-val {
-    width: 110px;
-    padding: 8px 10px;
-    font-family: "Courier New", monospace;
-    font-weight: 700;
-    text-align: center;
 }
 
 .po-signatures {

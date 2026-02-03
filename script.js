@@ -26,6 +26,10 @@ function attachEventListeners() {
     document.getElementById('btn_print')?.addEventListener('click', printPDF);
 }
 
+function getInputValue(id) {
+    return document.getElementById(id)?.value ?? '';
+}
+
 function setMode(m) {
     mode = m;
     applyCase();
@@ -50,9 +54,9 @@ function format(num) {
 }
 
 function getFinanceValues() {
-    const price = parseFloat(document.getElementById('in_price').value) || 0;
-    const delivery = parseFloat(document.getElementById('in_delivery').value) || 0;
-    const down = parseFloat(document.getElementById('in_down').value) || 0;
+    const price = parseFloat(getInputValue('in_price')) || 0;
+    const delivery = parseFloat(getInputValue('in_delivery')) || 0;
+    const down = parseFloat(getInputValue('in_down')) || 0;
     return {
         price,
         delivery,
@@ -66,7 +70,6 @@ function calc() {
     document.getElementById('in_total_due').value = format(total);
     return total;
 }
-
 
 function fitText(el, min = 6) {
     if (!el) return;
@@ -140,7 +143,7 @@ function setText(id, value) {
 
 function syncPrintFields() {
     // Update Document Title with Customer Name
-    const customer = document.getElementById('in_customer').value || '';
+    const customer = getInputValue('in_customer');
     document.title = customer ? `Bill Of Sale ${customer}` : 'Bill Of Sale';
 
     const pad2 = (n) => String(n).padStart(2, '0');
@@ -148,28 +151,28 @@ function syncPrintFields() {
     document.getElementById('in_total_due').value = format(total);
 
     const fields = [
-        ['out_po', document.getElementById('in_po').value],
-        ['out_salesman', document.getElementById('in_salesman').value],
-        ['out_salesman_sig', document.getElementById('in_salesman').value],
-        ['out_salesman_sign', document.getElementById('in_salesman').value],
-        ['out_customer', document.getElementById('in_customer').value],
-        ['out_customer_sig', document.getElementById('in_customer').value],
-        ['out_address', document.getElementById('in_address').value],
-        ['out_phone', document.getElementById('in_phone').value],
-        ['out_email', document.getElementById('in_email').value],
-        ['out_city', document.getElementById('in_city').value],
-        ['out_zip', document.getElementById('in_zip').value],
-        ['out_mfgr', document.getElementById('in_mfgr').value],
-        ['out_model', document.getElementById('in_model').value],
-        ['out_vin', document.getElementById('in_vin').value],
-        ['out_color', document.getElementById('in_color').value],
-        ['out_miles', document.getElementById('in_miles').value],
+        ['out_po', getInputValue('in_po')],
+        ['out_salesman', getInputValue('in_salesman')],
+        ['out_salesman_sig', getInputValue('in_salesman')],
+        ['out_salesman_sign', getInputValue('in_salesman')],
+        ['out_customer', getInputValue('in_customer')],
+        ['out_customer_sig', getInputValue('in_customer')],
+        ['out_address', getInputValue('in_address')],
+        ['out_phone', getInputValue('in_phone')],
+        ['out_email', getInputValue('in_email')],
+        ['out_city', getInputValue('in_city')],
+        ['out_zip', getInputValue('in_zip')],
+        ['out_mfgr', getInputValue('in_mfgr')],
+        ['out_model', getInputValue('in_model')],
+        ['out_vin', getInputValue('in_vin')],
+        ['out_color', getInputValue('in_color')],
+        ['out_miles', getInputValue('in_miles')],
         ['out_price', format(price)]
     ];
 
     fields.forEach(f => setText(f[0], f[1]));
 
-    const dt = document.getElementById('in_date').value;
+    const dt = getInputValue('in_date');
     if (dt) {
         const dObj = new Date(dt);
         const s = pad2(dObj.getMonth() + 1) + '/' + pad2(dObj.getDate()) + '/' + dObj.getFullYear();
